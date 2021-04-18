@@ -18,8 +18,7 @@ public class CarouselItems {
 	static ArrayList<String> list = new ArrayList<String>();
 
 	public static ArrayList<String> RequiredLists(String path1) {
-		List<WebElement> list1 = driver.findElements(By.xpath(path1));
-
+		List<WebElement> list1 = driver.findElements(By.xpath("//div[@class=\"sc-fvhGYg kHEClt\"]//h3[contains(text(), '"+path1+"')]/parent::div/parent::div/following-sibling::div//*[@class=\"puv25r-2 cwZEwU\"]/img"));
 		for (int i = 1; i < list1.size(); i++) {
 
 			prodName = list1.get(i).getAttribute("alt");
@@ -35,9 +34,8 @@ public class CarouselItems {
 
 		driver.get("https://www.noon.com/uae-en/");
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		String path = "(//div[@class=\"sc-GTWni GkeGT\"])[1]//div[@class=\"productImage\"]/div/div/div/img";
-		String path2 = "(//div[@class=\"sc-GTWni GkeGT\"])[3]//div[@class=\"productImage\"]/div/div/div/img";
-		String path3 = "(//div[@class=\"sc-GTWni GkeGT\"])[8]//div[@class=\"productImage\"]/div/div/div/img";
+		String path ="Recommended For You";
+
 		System.out.println("----------------------TOP RequiredLists-------------------------");
 		ArrayList<String> s1 = RequiredLists(path);
 		
@@ -47,14 +45,14 @@ public class CarouselItems {
 		
 
 		System.out.println("----------------------TOP PICKS IN ELECTRONICS-------------------------");
-		ArrayList<String> s2 = RequiredLists(path);
+		ArrayList<String> s2 = RequiredLists("Top picks in electronics");
 		
 		for (String s : s2) {
 			System.out.println(s);
 		}
 		
 		System.out.println("----------------------LIMITED TIME OFFERS-------------------------");
-		ArrayList<String> s3 = RequiredLists(path);
+		ArrayList<String> s3 = RequiredLists("Limited time offers");
 		
 		for (String s : s3) {
 			System.out.println(s);
